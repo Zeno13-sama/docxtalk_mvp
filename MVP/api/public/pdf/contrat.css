@@ -1,0 +1,88 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+}
+
+/* Contract container for A4 dimensions */
+.contract {
+    background: white;
+    padding: 30px;
+    width: 21cm; /* Largeur A4 */
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #333;
+    line-height: 1.8;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* Ajustement de marges pour éviter coupure inopportune dans le PDF */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+/* Section spacing */
+.parties, .articles, .signature {
+    margin-bottom: 1.5cm;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+p {
+    margin: 1em 0;
+    max-width: 600px; /* Limite la largeur du paragraphe */
+    text-align: justify; /* Justifie le texte pour un alignement uniforme */
+    overflow-wrap: break-word; /* Assure la coupure des mots si nécessaire */
+}
+
+
+section {
+    margin-bottom: 2em;
+    /* Empêcher la division d’une section sur deux pages */
+    page-break-inside: avoid;
+}
+
+ul {
+    margin-left: 1cm;
+    list-style: none;
+}
+
+ul li {
+    margin-bottom: 0.5cm;
+}
+
+.signature {
+    text-align: center;
+    margin-top: 2cm;
+}
+
+.signature p {
+    margin: 0.8cm 0;
+}
+
+p, li {
+    line-height: 1.8;
+    margin-bottom: 0.6cm;
+}

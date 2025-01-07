@@ -1,0 +1,88 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Document container */
+.document {
+    background: white;
+    padding: 30px;
+    width: 21cm; /* Largeur A4 */
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #333;
+    line-height: 1.8;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* Ajustement de marges pour éviter coupure inopportune dans le PDF */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+/* Section titles */
+h2 {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+/* Paragraph styling */
+/* p {
+    margin: 1em 0;
+    max-width: 600px; /* Limite la largeur du paragraphe
+    text-align: justify; /* Justifie le texte pour un alignement uniforme
+    overflow-wrap: break-word; /* Assure la coupure des mots si nécessaire
+} */
+
+
+p {
+    margin: 1em auto; /* Centrer le paragraphe avec un espace vertical */
+    max-width: 80%; /* Limite la largeur à 80% du conteneur */
+    text-align: justify; /* Justifie le texte pour un alignement uniforme */
+    overflow-wrap: break-word; /* Assure la coupure des mots si nécessaire */
+}
+
+
+/* Section styling */
+section {
+    margin-bottom: 2em;
+    /* Empêcher la division d’une section sur deux pages */
+    page-break-inside: avoid;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 2cm;
+}
+
+footer p {
+    margin-bottom: 0.4cm;
+}
+
+/* Additional styles for improved readability */
+.document p, .document h2, .document footer p {
+    max-width: 19cm;
+    margin-left: auto;
+    margin-right: auto;
+}
+
