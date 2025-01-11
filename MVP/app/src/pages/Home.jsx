@@ -2,6 +2,7 @@ import React from "react";
 import LeftNav from "../components/LeftNav";
 import ChatContainer from "../components/ChatContainer";
 import GoogleOneTapModal from "./GoogleOneTapModal";
+import Mobile from "../components/Mobile";
 // import Mobile from "../components/Mobile";
 
 
@@ -12,7 +13,7 @@ function Home() {
       <ChatContainer />
       {/* <GoogleOneTapModal/> */}
       <span className="flex lg:hidden">
-        {/* <Mobile /> */}
+        <Mobile />
       </span>
     </div>
   );
