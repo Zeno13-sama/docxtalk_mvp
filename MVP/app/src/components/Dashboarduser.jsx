@@ -11,7 +11,9 @@ function DashboardUser() {
             {/* Sidebar et Library */}
             <div className="hidden md:flex flex-col w-1/5 bg-gray-800">
                 <Sidebar />
-                <Library />
+                <div className="mt-auto">
+                    <Library />
+                </div>
             </div>
         
             {/* Contenu dynamique */}
