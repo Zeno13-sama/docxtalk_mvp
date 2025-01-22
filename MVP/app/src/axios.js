@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const axios = Axios.create({
-	baseURL: "https://www.docx-talk.com/api",
+	baseURL: "https://docxtalks.com/api",
 	withCredentials: true,
 	headers: {
 		"Content-Type": "multipart/form-data",
