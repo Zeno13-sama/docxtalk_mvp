@@ -38,15 +38,13 @@ services:
       - ./api:/var/www/html
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - ./api/storage:/var/www/html/storage
-    ports:
-      - "8000:8000"
     depends_on:
       - postgres-db
     networks:
       - netcon
     restart: unless-stopped
     entrypoint: ["/usr/local/bin/entrypoint.sh"]
-    command: ["sh", "-c", "php artisan migrate || true  && php artisan serve --host=0.0.0.0"]
+    command: ["sh", "-c", ""]
 
   supervisor:
     build:
@@ -84,7 +82,6 @@ services:
     volumes:
       - ./nginx/conf.d/docx-talk.conf:/etc/nginx/conf.d/docx-talk.conf
       - ./ssl:/etc/nginx/ssl
-      - /etc/letsencrypt:/etc/letsencrypt  # Ajoute cette ligne pour monter les certificats
     ports:
       - "80:80"
       - "443:443"

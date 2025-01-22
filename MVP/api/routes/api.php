@@ -27,6 +27,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::get('/', function () {
+    return view('home'); // Retourne la vue home.blade.php
+});
 
 Route::get('/movies', [MovieController::class, 'index']);
 Route::post('/create-movie', [MovieController::class, 'store']);
