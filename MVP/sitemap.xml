@@ -1,0 +1,131 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- ============================================ -->
+  <!-- Routes publiques principales -->
+  <!-- ============================================ -->
+  <url>
+    <loc>https://docxtalks.com/app</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/edit</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/TOS</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/Privacy Policy</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/contact</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/pricing</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/faq</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/howItWorks</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/beautifulWorks</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============================================ -->
+  <!-- Routes d'authentification -->
+  <!-- ============================================ -->
+  <url>
+    <loc>https://docxtalks.com/app/auth/signin</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/auth/signup</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/auth/google</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============================================ -->
+  <!-- Routes de blog et contenu -->
+  <!-- ============================================ -->
+  <url>
+    <loc>https://docxtalks.com/app/blog</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/blog-details</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/about</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============================================ -->
+  <!-- Routes dynamiques (exemple : /app/topic/:keyword) -->
+  <!-- ============================================ -->
+  <url>
+    <loc>https://docxtalks.com/app/topic/seo</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/topic/marketing</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docxtalks.com/app/topic/design</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Ajoute d'autres routes dynamiques ici si nécessaire -->
+
+  <!-- ============================================ -->
+  <!-- Routes protégées (non incluses dans le sitemap) -->
+  <!-- ============================================ -->
+  <!-- Les routes protégées ne sont pas incluses car elles nécessitent une authentification. -->
+</urlset>
