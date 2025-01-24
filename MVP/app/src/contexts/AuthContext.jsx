@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const csrfToken = async () => {
-    await axios.get('https://www.docx-talk.com/sanctum/csrf-cookie');
+    await axios.get('https://www.docxtalks.com/sanctum/csrf-cookie');
     return true;
   };
 
