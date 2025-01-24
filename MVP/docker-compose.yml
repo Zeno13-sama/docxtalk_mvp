@@ -103,6 +103,7 @@ services:
     container_name: gunicorn
     volumes:
       - ..:/docxtalk_mvp  # Montez votre code dans le conteneur
+      - /var/run/docker.sock:/var/run/docker.sock  # Monte le socket Docker
     ports:
       - "5000:5000"  # Exposez le port 5000
     networks:
