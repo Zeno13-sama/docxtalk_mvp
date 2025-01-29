@@ -64,7 +64,7 @@ const SigninPage = () => {
       await csrfToken();
       const resp = await axios.post('/login', body);
       if (resp.status === 200) {
-        clearTimeout(timeoutId);
+        
         setUser(resp.data.user, resp.data.role);
         console.log('Role:', resp.data.role); // Ajoute ce log pour déboguer
         if (resp.data.role === 'admin') {

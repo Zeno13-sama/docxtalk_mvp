@@ -11,7 +11,7 @@ import DefaultLayout from './components/ProtectedLayout';
 import PrivateRoute from './components/PrivateRoute';
 import GuestLayout from './components/GuestLayout';
 import HeaderUser from './components/Headeruser';
-// import Sidebar from './components/Sidebar';
+import AdminLayout from './components/AdminLayout';
 import HomeUser from './app/HomeUser';
 import Dashboarduser from './components/Dashboarduser';
 import Layout from './components/Shared/Layout';
@@ -20,7 +20,7 @@ import AdminBlog from './components/Admin/AdminBlog';
 import DashboardUser from './components/Dashboarduser';
 import TopicPage from './components/TopicPage';
 import WebsiteSeo from './pages/WebsiteSeo';
-import Contact from './components/Contact'; 
+import Contact from './components/Contact';
 import Contact2 from './components/Contact/index2';
 import SubscriptionPage from './components/CheckoutForm';
 import Pricing from './components/CheckoutForm';
@@ -36,159 +36,71 @@ import Card from './components/Card';
 import HowItWorks from './components/HowItWorks';
 import Faqnav from './components/Faqnav';
 import Template from './components/Template';
-import UserGreeting from './components/UserGreeting';
+import UserGreeting from './components/UserGreeting';  
 import GoogleCallback from './components/GoogleCallback';
 
 const router = createBrowserRouter([
 
+  // Public routes
   {
-		path: '/',
-		element: <GuestLayout />,
-		children: [
-			{
-        path: '/app',
-        element: <Website />, 
-      },
-      {
-        path: '/app/edit',
-        element: <Editpdf />, 
-      },
-      {
-        path: '/app/TOS',
-        element: <TOS />, 
-      },
-      {
-        path: '/app/Privacy Policy',
-        element: <Privacy />, 
-      },
-      {
-        path: '/app/contact',
-        element: <ContactLink />, 
-      },
-      {
-        path: '/app/pricing',
-        element: <PricingFooter />, 
-      },
-      {
-        path: '/app/faq',
-        element: <Faqnav />, 
-      },
-      {
-        path: '/app/howItWorks',
-        element: <HowItWorks />, 
-      },
-      {
-        path: '/app/beautifulWorks',
-        element: <Template />, 
-      },
-      {
-        path: '/app/auth/signin',
-        element: <RegisteList/>,
-      },
-      {
-        path: '/app/auth/signup',
-        element: <AuthentificationList />,
-      },
-      {
-        path: '/app/auth/google',
-        element: <GoogleCallback />,
-      },
-
-      {
-				path: '/app/blog',
-				element: <BlogList/>,
-			},
-      {
-				path: '/app/blog-details',
-				element: <BlogDetailsList/>,
-			},
-      {
-				path: '/app/about',
-				element: <AboutPageList/>,
-			},
-      // Nouvelle route dynamique
-      {
-        path: '/app/topic/:keyword',  // Inclure "topic" dans le chemin
-        element: <WebsiteSeo />,
-      }
-
-      
+    path: '/',
+    element: <GuestLayout />,
+    children: [
+      { path: '/app', element: <Website /> },
+      { path: '/app/edit', element: <Editpdf /> },
+      { path: '/app/TOS', element: <TOS /> },
+      { path: '/app/Privacy Policy', element: <Privacy /> },
+      { path: '/app/contact', element: <ContactLink /> },
+      { path: '/app/pricing', element: <PricingFooter /> },
+      { path: '/app/faq', element: <Faqnav /> },
+      { path: '/app/howItWorks', element: <HowItWorks /> },
+      { path: '/app/beautifulWorks', element: <Template /> },
+      { path: '/app/auth/signin', element: <RegisteList /> },
+      { path: '/app/auth/signup', element: <AuthentificationList /> },
+      { path: '/app/auth/google', element: <GoogleCallback /> },
+      { path: '/app/blog', element: <BlogList /> },
+      { path: '/app/blog-details', element: <BlogDetailsList /> },
+      { path: '/app/about', element: <AboutPageList /> },
+      { path: '/app/topic/:keyword', element: <WebsiteSeo /> },
     ],
   },
 
-  // {
-  //   path: '/app/dashboard',
-  //   element: <Dashboarduser/>,
-  // },
-
+  // Admin routes
   {
-		path: '/app/admin',
-		element: <Layout/>,
-		children: [
-		{
-			path: '/app/admin/dashboard',
-			element: <Dashboard />,
-		},
-		{
-			path: '/app/admin/blog',
-			element: <AdminBlog/>
-		},
-		
-		],
-	},
+    path: '/app/admin',
+    element: <AdminLayout />,
+    children: [
+      { path: '/app/admin', element: <Layout /> },
+      { path: '/app/admin/dashboard', element: <Dashboard /> },
+      { path: '/app/admin/blog', element: <AdminBlog /> },
+    ],
+  },
 
-  // {
-  //   path: '/app/profile',
-  //   element: <Profile />, 
-  // },
+  // Protected routes
   {
-		path: '/',  
-		element: <DefaultLayout />,
-		children: [
-			{
+    path: '/',
+    element: <DefaultLayout />,
+    children: [
+      {
         path: '/app/profile',
-        element: <DashboardUser />, 
+        element: <DashboardUser />,
         children: [
-          // route pour le dashboard user
-          {
-            path: '/app/profile/',    
-            element: <UserGreeting/>,
-          },
-          {
-            path: '/app/profile/home',    
-            element: <HomeUser/>,
-          },
-          {
-            path: '/app/profile/subscriptions',    
-            element: <Card/>,
-          },
-          {
-            path: '/app/profile/customer-service',    
-            element: <Contact2/>,
-            
-          },
-          {
-            path: '/app/profile/status_pricing',    
-            element: <Card/>,
-            
-          },
-          
+          { path: '/app/profile/', element: <UserGreeting /> },
+          { path: '/app/profile/home', element: <HomeUser /> },
+          { path: '/app/profile/subscriptions', element: <Card /> },
+          { path: '/app/profile/customer-service', element: <Contact2 /> },
+          { path: '/app/profile/status_pricing', element: <Card /> },
         ],
       },
-      {
-        path: '/app/generate',    
-        element: <Home/>,
-      },
-      
-      
     ],
   },
-  
-  {
-		path: '*',
-		element: <Notfound/>,
-    },
-  
+
+  // Other routes
+  { path: '/app/generate', element: <Home /> },
+
+  // Not found route
+  { path: '*', element: <Notfound /> },
+
 ]);
 
 const Router = () => (
@@ -196,3 +108,4 @@ const Router = () => (
 );
 
 export default Router;
+

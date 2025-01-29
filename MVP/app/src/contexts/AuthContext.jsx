@@ -16,19 +16,17 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!user);
   const [users, setUsers] = useState([]);
 
-  const setUser = (user, role) => {
+  const setUser = (user) => {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('role', role);
       setIsAuthenticated(true);
     } else {
       localStorage.removeItem('user');
-      localStorage.removeItem('role');
       setIsAuthenticated(false);
     }
-    _setUser(user);
-    setRole(role);
+     _setUser(user);
   };
+
 
   const addUser = (userInfo) => {
     setUsers((prevUsers) => [...prevUsers, userInfo]);
