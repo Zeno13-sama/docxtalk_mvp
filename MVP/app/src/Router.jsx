@@ -17,6 +17,7 @@ import Dashboarduser from './components/Dashboarduser';
 import Layout from './components/Shared/Layout';
 import Dashboard from './pages/Dashboard';
 import AdminBlog from './components/Admin/AdminBlog';
+import Products from './components/Admin/Products';
 import DashboardUser from './components/Dashboarduser';
 import TopicPage from './components/TopicPage';
 import WebsiteSeo from './pages/WebsiteSeo';
@@ -76,6 +77,7 @@ const router = createBrowserRouter([
         children: [
           { path: '/app/admin/dashboard', element: <Dashboard /> },
           { path: '/app/admin/blog', element: <AdminBlog /> },
+          { path: '/app/admin/products', element: <Products /> },
         ],
       },
     ],

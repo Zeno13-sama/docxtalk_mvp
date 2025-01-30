@@ -20,7 +20,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 	{
 		key: 'products',
 		label: 'Products',
-		path: '/app/products',
+		path: '/app/admin/products',
 		icon: <HiOutlineCube />
 	},
 	{
