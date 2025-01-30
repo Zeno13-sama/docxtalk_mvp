@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { HiHome, HiMail } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { MdHeadset, MdSubscriptions } from "react-icons/md";
+import { FaCrown } from "react-icons/fa"; // Ajout de l'icône couronne
 
 const Sidebar = () => {
   const navigate = useNavigate(); // Hook pour la navigation
@@ -67,8 +68,8 @@ const Sidebar = () => {
           className={`flex items-center gap-2 text-neutral-400 cursor-pointer rounded-md p-2 transition-colors ${isActive('/app/profile/subscriptions') ? 'bg-sky-700' : 'hover:bg-sky-700'}`}
           onClick={() => handleNavigation('/app/profile/subscriptions')}
         >
-          <MdSubscriptions size={26} />
-          <p className="font-medium text-md cursor-pointer">Subscriptions</p>
+          <FaCrown size={26} />
+          <p className="font-medium text-md cursor-pointer">Remove watermark</p>
         </div>
       </div>
     </div>

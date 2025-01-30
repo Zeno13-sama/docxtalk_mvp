@@ -6,6 +6,7 @@ import { FiUser } from "react-icons/fi";
 import { MdHeadset, MdSubscriptions } from "react-icons/md";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { FaCrown } from "react-icons/fa"; // Ajout de l'icône couronne
 import axios from '../axios';
 
 const HeaderUser = () => {
@@ -140,8 +141,8 @@ const HeaderUser = () => {
             className="flex items-center gap-2 text-neutral-600 cursor-pointer rounded-md p-2 transition-colors hover:bg-sky-700 hover:text-white"
             onClick={() => handleNavigation("/app/profile/subscriptions")}
           >
-            <MdSubscriptions size={20} />
-            <p className="font-medium text-sm">Subscriptions</p>
+            <FaCrown size={20} />
+            <p className="font-medium text-sm">Remove watermark</p>
           </div>
 
           <div className="flex items-center justify-between py-4 gap-2 cursor-pointer">

@@ -65,14 +65,19 @@ const router = createBrowserRouter([
     ],
   },
 
-  // Admin routes
+  // Admin Routes
   {
     path: '/app/admin',
     element: <AdminLayout />,
     children: [
-      { path: '/app/admin', element: <Layout /> },
-      { path: '/app/admin/dashboard', element: <Dashboard /> },
-      { path: '/app/admin/blog', element: <AdminBlog /> },
+      {
+        path: '/app/admin',
+        element: <Layout />,
+        children: [
+          { path: '/app/admin/dashboard', element: <Dashboard /> },
+          { path: '/app/admin/blog', element: <AdminBlog /> },
+        ],
+      },
     ],
   },
 

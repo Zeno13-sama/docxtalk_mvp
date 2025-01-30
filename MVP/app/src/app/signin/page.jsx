@@ -66,7 +66,7 @@ const SigninPage = () => {
       if (resp.status === 200) {
         
         setUser(resp.data.user, resp.data.role);
-        console.log('Role:', resp.data.role); // Ajoute ce log pour déboguer
+       //console.log('Role:', resp.data.role); // Ajoute ce log pour déboguer
         if (resp.data.role === 'admin') {
           setRedirectPath('/app/admin');
         } else {

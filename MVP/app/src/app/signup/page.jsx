@@ -493,7 +493,7 @@ const SignupPage = () => {
     } catch (error) {
       clearTimeout(timeoutId);
       if (error.response.status === 422) {
-        console.log(error.response.data.errors);
+        //console.log(error.response.data.errors);
         setErrors({
           name: error.response.data.errors.name?.[0] || '',
           email: error.response.data.errors.email?.[0] || '',
