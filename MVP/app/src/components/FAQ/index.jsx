@@ -4,6 +4,7 @@ import faqData from './faqData'; // Assure-toi que le chemin d'importation est c
 import SectionTitle from '../Common/SectionTitle';
 import DescriptionTitle from '../Common/descriptionTitle';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import { Helmet } from 'react-helmet-async';
 
 const Faq = () => {
   const [selectedId, setSelectedId] = useState(null);
@@ -14,7 +15,15 @@ const Faq = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 " id="faq"> 
+    <>
+      <Helmet>
+        <title>FAQ - Frequently Asked Questions | DocxTalk</title>
+        <meta
+          name="description"
+          content="Find answers to the most frequently asked questions about DocxTalk. Check out our FAQ to learn more about our services."
+        />
+      </Helmet>
+      <div className="flex items-center justify-center min-h-screen p-4 " id="faq"> 
       
       <div className="w-full max-w-2xl p-4  rounded-lg ">
         <DescriptionTitle
@@ -87,6 +96,8 @@ const Faq = () => {
       </div>
       
     </div>
+    </>
+    
   );
 };
 

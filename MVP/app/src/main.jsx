@@ -11,6 +11,7 @@ import { PdfProvider } from './contexts/PdfContext.jsx';
 import { ToastProvider } from './contexts/ToastContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { VisibilityProvider } from './contexts/VisibilityContext.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 import { UploadProvider } from './contexts/UploadContext.jsx';
 
 const clientId = '1069436410892-pknlg3609jhvb823j3m8rbbu9eltre81.apps.googleusercontent.com';
@@ -25,9 +26,11 @@ createRoot(document.getElementById('root')).render(
             <UploadProvider>
               <VisibilityProvider>
                 <ToastProvider>
-                  <StrictMode>
-                    <App />
-                  </StrictMode>
+                  <HelmetProvider>
+                    <StrictMode>
+                      <App />
+                    </StrictMode>
+                  </HelmetProvider>
                 </ToastProvider>
               </VisibilityProvider>
             </UploadProvider>

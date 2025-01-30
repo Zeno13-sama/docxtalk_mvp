@@ -3,6 +3,7 @@ import axios from '../../axios';
 import SingleBlog from '../../components/Blog/SingleBlog';
 import Breadcrumb from '../../components/Common/Breadcrumb';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import { Helmet } from 'react-helmet-async';
 
 const Blog = () => {
   const { theme } = useContext(ThemeContext);
@@ -28,6 +29,15 @@ const Blog = () => {
 
   return (
     <>
+
+      <Helmet>
+        <title>DocxTalk Blog - News, Tips and Tricks</title>
+        <meta
+          name="description"
+          content="Discover informative articles, practical advice and the latest news on the world of administrative documents."
+        />
+      </Helmet>
+
       <Breadcrumb
         pageName="Blog Grid"
         description="Welcome to the official Docxtalk blog! Here we share ideas, tips, and resources to help you get the most out of our innovative solution for generating, editing, and sending your company’s documents."

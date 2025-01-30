@@ -4,6 +4,7 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 import axios from '../../axios';
 import { useAuth } from '../../contexts/AuthContext';
 import SignIn from '../../components/SignIn';
+import { Helmet } from 'react-helmet-async';
 
 const SigninPage = () => {
   const { theme } = useContext(ThemeContext);
@@ -93,6 +94,14 @@ const SigninPage = () => {
 
   return (
     <>
+
+      <Helmet>
+        <title>Registration - Join DocxTalks</title>
+        <meta
+          name="description"
+          content="Register on DocxTalks to access our automated administrative document management features and simplify your daily life."
+        />
+      </Helmet>
       <section className={`relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px] ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
