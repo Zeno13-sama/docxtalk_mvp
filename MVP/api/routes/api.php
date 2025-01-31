@@ -21,6 +21,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/user', function (Request $request) {
@@ -33,6 +34,7 @@ Route::get('/', function () {
 
 Route::get('/movies', [MovieController::class, 'index']);
 Route::post('/create-movie', [MovieController::class, 'store']);
+
 
 
 Route::get('/checkout/success', [PaymentController::class, 'success'])->name('checkout.success');
@@ -142,9 +144,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/checkout/{id}', [PaymentController::class, 'checkout']);
     Route::post('/plan', [PlanController::class, 'createPlan']);
 
-    Route::get('/user-greeting', [AuthController::class, 'getUserGreeting']);
 
+
+    // Routes pour les méthodes de l'Admin
+    Route::get('/admin/users', [AdminController::class, 'getAllUsers']);
+    Route::post('/admin/users/delete', [AdminController::class, 'deleteUsers']);
+    Route::post('/admin/users/block', [AdminController::class, 'blockUsers']);
+    Route::post('/admin/users/unblock', [AdminController::class, 'unblockUsers']);
+
+    Route::get('/user-greeting', [AuthController::class, 'getUserGreeting']);
     Route::get('/alluser-greeting', [AuthController::class, 'getAllUserGreetings']);
+
+
 
 
 });
