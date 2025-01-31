@@ -53,7 +53,6 @@ class AdminController extends Controller
     }
 
     // Débloquer un ou plusieurs utilisateurs
-
     public function unblockUsers(Request $request)
     {
         // Valider que les IDs sont bien présents et sous forme de tableau

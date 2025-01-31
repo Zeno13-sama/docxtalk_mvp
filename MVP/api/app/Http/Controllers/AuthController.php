@@ -18,57 +18,6 @@ use Illuminate\Validation\ValidationException;
 use Google_Client;
 
 class AuthController extends Controller {
-    // register a new user method
-    // public function register(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'password' => 'required|string|min:8|confirmed',
-    //     ]);
-
-    //     $user = User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-
-    //     // Création du token avec une date d'expiration
-    //     $token = $user->createToken('auth_token')->plainTextToken;
-    //     $expiresAt = now()->addDays(1); // Définir l'expiration à 1 jour
-
-    //     // En option, enregistrez la date d'expiration dans la base de données
-    //     // $user->tokens()->where('id', $tokenId)->update(['expires_at' => $expiresAt]);
-
-    //     return response()->json([
-    //         'message' => 'User registered successfully',
-    //         'user' => $user,
-    //         'access_token' => $token,
-    //         'token_type' => 'Bearer',
-    //         'expires_at' => $expiresAt->toDateTimeString(), // Inclure la date d'expiration dans la réponse
-    //     ], 201);
-    // }
-
-
-    // public function register(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'password' => 'required|string|min:8|confirmed',
-    //     ]);
-
-    //     $user = User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-
-    //     return response()->json([
-    //         'message' => 'User registered successfully',
-    //         'user' => $user
-    //     ], 201);
-    // }
 
     public function register(Request $request)
     {
@@ -94,67 +43,6 @@ class AuthController extends Controller {
     }
 
 
-    // login a user method
-
-    // public function login(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required'
-    //     ]);
-
-    //     if (!Auth::attempt($request->only('email', 'password'))) {
-    //         throw ValidationException::withMessages([
-    //             'email' => ['The provided credentials are incorrect.'],
-    //         ]);
-    //     }
-
-    //     $user = Auth::user();
-    //     $token = $user->createToken('auth_token')->plainTextToken;
-
-    //     // Définir la durée de vie du token à 1 jour (60 * 24 minutes)
-    //     $expiresAt = now()->addDays(1); // Ajoute 1 jour à la date actuelle
-
-    //     // Enregistrez la date d'expiration dans la base de données si nécessaire
-    //     // $user->tokens()->where('id', $tokenId)->update(['expires_at' => $expiresAt]);
-
-    //     return response()->json([
-    //         'message' => 'User logged in successfully',
-    //         'access_token' => $token,
-    //         'token_type' => 'Bearer',
-    //         'expires_at' => $expiresAt->toDateTimeString(), // Inclure la date d'expiration dans la réponse
-    //     ]);
-    // }
-
-    // public function login(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required'
-    //     ]);
-
-    //     // Vérifier si les identifiants sont corrects
-    //     if (!Auth::attempt($request->only('email', 'password'))) {
-    //         throw ValidationException::withMessages([
-    //             'email' => ['The provided credentials are incorrect.'],
-    //         ]);
-    //     }
-
-    //     // Récupérer l'utilisateur authentifié
-    //     $user = Auth::user();
-
-    //     // Créer le token avec une expiration d'un jour
-    //     $token = $user->createToken('auth_token')->plainTextToken;
-    //     $expiresAt = now()->addDays(1);
-
-    //     return response()->json([
-    //         'message' => 'User logged in successfully',
-    //         'user' => $user, // Inclure les informations de l'utilisateur
-    //         'access_token' => $token,
-    //         'token_type' => 'Bearer',
-    //         'expires_at' => $expiresAt->toDateTimeString(),
-    //     ]);
-    // }
 
     public function login(Request $request)
     {
@@ -207,29 +95,6 @@ class AuthController extends Controller {
     public function user(Request $request) {
         return new UserResource($request->user());
     }
-    // public function user(Request $request) {
-    //     // Vérifiez si un utilisateur est authentifié
-    //     if (!$request->user()) {
-    //         Log::error('Aucun utilisateur authentifié.', [
-    //             'session' => session()->all(),
-    //             'cookies' => $request->cookies->all(),
-    //         ]);
-
-    //         return response()->json(['error' => 'Unauthorized'], 401);
-    //     }
-
-    //     // Log de l'utilisateur authentifié
-    //     Log::info('Utilisateur authentifié avec succès.', [
-    //         'user_id' => $request->user()->id,
-    //         'user_email' => $request->user()->email,
-    //         'session_data' => session()->all(),
-    //         'cookies' => $request->cookies->all(),
-    //     ]);
-
-    //     // Retourner l'utilisateur sous forme de ressource
-    //     return new UserResource($request->user());
-    // }
-
 
 
     // Method to get all users

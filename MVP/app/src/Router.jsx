@@ -39,6 +39,7 @@ import Faqnav from './components/Faqnav';
 import Template from './components/Template';
 import UserGreeting from './components/UserGreeting';  
 import GoogleCallback from './components/GoogleCallback';
+import UserList from './components/Admin/UserList';
 
 const router = createBrowserRouter([
 
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
         children: [
           { path: '/app/admin/dashboard', element: <Dashboard /> },
           { path: '/app/admin/blog', element: <AdminBlog /> },
-          { path: '/app/admin/products', element: <Products /> },
+          { path: '/app/admin/products', element: <UserList /> },
         ],
       },
     ],
