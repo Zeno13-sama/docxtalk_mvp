@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
+use App\Http\Requests\UpdatePasswordRequest;
+use App\Models\User;
 
 class AdminController extends Controller
 {

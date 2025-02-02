@@ -9,6 +9,7 @@ const UserList = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get("/admin/users");
+      console.log(response.data); // Debug
       setUsers(response.data.users);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -28,12 +29,22 @@ const UserList = () => {
     );
   };
 
+  // Mettre à jour l'état local après une action sur les utilisateurs
+  const updateUsersState = (updatedIds, changes) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        updatedIds.includes(user.id) ? { ...user, ...changes } : user
+      )
+    );
+    setSelectedUsers([]); // Réinitialiser la sélection
+  };
+
   // Supprimer les utilisateurs sélectionnés
   const handleDeleteUsers = async () => {
     try {
       await axios.post("/admin/users/delete", { user_ids: selectedUsers });
-      fetchUsers(); // Rafraîchir la liste
-      setSelectedUsers([]); // Réinitialiser la sélection
+      setUsers((prevUsers) => prevUsers.filter((user) => !selectedUsers.includes(user.id)));
+      setSelectedUsers([]);
     } catch (error) {
       console.error("Error deleting users:", error);
     }
@@ -43,8 +54,7 @@ const UserList = () => {
   const handleBlockUsers = async () => {
     try {
       await axios.post("/admin/users/block", { user_ids: selectedUsers });
-      fetchUsers(); // Rafraîchir la liste
-      setSelectedUsers([]); // Réinitialiser la sélection
+      updateUsersState(selectedUsers, { is_blocked: true });
     } catch (error) {
       console.error("Error blocking users:", error);
     }
@@ -54,8 +64,7 @@ const UserList = () => {
   const handleUnblockUsers = async () => {
     try {
       await axios.post("/admin/users/unblock", { user_ids: selectedUsers });
-      fetchUsers(); // Rafraîchir la liste
-      setSelectedUsers([]); // Réinitialiser la sélection
+      updateUsersState(selectedUsers, { is_blocked: false });
     } catch (error) {
       console.error("Error unblocking users:", error);
     }
@@ -95,26 +104,34 @@ const UserList = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td className="px-4 py-2 border">
-                  <input
-                    type="checkbox"
-                    checked={selectedUsers.includes(user.id)}
-                    onChange={() => handleSelectUser(user.id)}
-                  />
-                </td>
-                <td className="px-4 py-2 border">{user.name}</td>
-                <td className="px-4 py-2 border">{user.email}</td>
-                <td className="px-4 py-2 border">
-                  {user.is_blocked ? (
-                    <span className="text-red-500">Bloqué</span>
-                  ) : (
-                    <span className="text-green-500">Actif</span>
-                  )}
+            {users.length > 0 ? (
+              users.map((user) => (
+                <tr key={user.id}>
+                  <td className="px-4 py-2 border">
+                    <input
+                      type="checkbox"
+                      checked={selectedUsers.includes(user.id)}
+                      onChange={() => handleSelectUser(user.id)}
+                    />
+                  </td>
+                  <td className="px-4 py-2 border">{user.name}</td>
+                  <td className="px-4 py-2 border">{user.email}</td>
+                  <td className="px-4 py-2 border">
+                    {user.is_blocked ? (
+                      <span className="text-red-500">Bloqué</span>
+                    ) : (
+                      <span className="text-green-500">Actif</span>
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="px-4 py-2 border text-center">
+                  Aucun utilisateur disponible
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

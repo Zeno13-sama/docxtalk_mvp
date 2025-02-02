@@ -44,12 +44,69 @@ class AuthController extends Controller {
 
 
 
+    // public function login(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required'
+    //     ]);
+
+    //     // Vérifier si les identifiants sont corrects
+    //     if (!Auth::attempt($request->only('email', 'password'))) {
+    //         throw ValidationException::withMessages([
+    //             'email' => ['The provided credentials are incorrect.'],
+    //         ]);
+    //     }
+
+    //     // Récupérer l'utilisateur authentifié
+    //     $user = Auth::user();
+
+    //     // Mettre à jour les informations utilisateur
+    //     $user->increment('visit_count'); // Incrémenter le compteur de visites
+    //     $user->last_login_at = now(); // Mettre à jour la dernière connexion
+    //     $user->save();
+
+    //     // Créer le token avec une expiration d'un jour
+    //     $token = $user->createToken('auth_token')->plainTextToken;
+    //     $expiresAt = now()->addDays(1);
+
+    //     return response()->json([
+    //         'message' => 'User logged in successfully',
+    //         'user' => $user, // Inclure les informations de l'utilisateur
+    //         'access_token' => $token,
+    //         'token_type' => 'Bearer',
+    //         'expires_at' => $expiresAt->toDateTimeString(),
+    //     ]);
+    // }
     public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
+
+        // Vérifier si l'utilisateur existe
+        $user = User::withTrashed()->where('email', $request->email)->first();
+
+        if (!$user) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+
+        // Vérifier si l'utilisateur a été supprimé
+        if ($user->trashed()) {
+            return response()->json([
+                'message' => 'Your account has been deleted. Please contact support if this is a mistake.'
+            ], 403);
+        }
+
+        // Vérifier si l'utilisateur est bloqué
+        if ($user->is_blocked) {
+            return response()->json([
+                'message' => 'Your account has been blocked. Please contact support for assistance.'
+            ], 403);
+        }
 
         // Vérifier si les identifiants sont corrects
         if (!Auth::attempt($request->only('email', 'password'))) {
@@ -58,12 +115,9 @@ class AuthController extends Controller {
             ]);
         }
 
-        // Récupérer l'utilisateur authentifié
-        $user = Auth::user();
-
         // Mettre à jour les informations utilisateur
-        $user->increment('visit_count'); // Incrémenter le compteur de visites
-        $user->last_login_at = now(); // Mettre à jour la dernière connexion
+        $user->increment('visit_count');
+        $user->last_login_at = now();
         $user->save();
 
         // Créer le token avec une expiration d'un jour
@@ -72,12 +126,13 @@ class AuthController extends Controller {
 
         return response()->json([
             'message' => 'User logged in successfully',
-            'user' => $user, // Inclure les informations de l'utilisateur
+            'user' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer',
             'expires_at' => $expiresAt->toDateTimeString(),
         ]);
     }
+
 
 
 
