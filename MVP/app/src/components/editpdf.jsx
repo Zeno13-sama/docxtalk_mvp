@@ -14,16 +14,23 @@ function Editpdf({ onLoad, documentData, refresh }) {
   useEffect(() => {
     console.log('Init WebViewer called');
 
-    // Ne crée WebViewer que si ce n'est pas déjà fait
-    if (!viewerDiv.current || instance) {
-      console.warn('WebViewer est déjà initialisé');
+    if (!viewerDiv.current) {
+      console.warn("WebViewer n'a pas trouvé son élément DOM.");
       return;
     }
+
+    // Empêcher la création de plusieurs instances
+    if (instance) {
+      console.warn('WebViewer est déjà initialisé, on annule la réinitialisation.');
+      return;
+    }
+
+    let newInstance = null;
 
     const initWebViewer = async () => {
       try {
         console.log('Creating a new WebViewer instance...');
-        const newInstance = await WebViewer(
+        newInstance = await WebViewer(
           {
             path: '/app/lib',
             licenseKey: 'demo:1727982776616:7e0d46050300000000069945db1215cb9199db6bd71565c5d7f70dc82f',
@@ -50,7 +57,7 @@ function Editpdf({ onLoad, documentData, refresh }) {
                   downloadType: 'pdf',
                 });
 
-                showToast('success', "By clicking the button you have successfully saved your work and you can now send it. Click the <-- BACK button to do so.");
+                showToast('success', "Document enregistré. Vous pouvez maintenant l'envoyer.");
 
                 const arr = new Uint8Array(data);
                 const blob = new Blob([arr], { type: 'application/pdf' });
@@ -62,7 +69,7 @@ function Editpdf({ onLoad, documentData, refresh }) {
                 });
                 console.log('Fichier envoyé avec succès:', response.data);
               } catch (error) {
-                console.error('Erreur lors de l\'envoi du fichier:', error);
+                console.error("Erreur lors de l'envoi du fichier:", error);
               }
             },
           });
@@ -79,12 +86,13 @@ function Editpdf({ onLoad, documentData, refresh }) {
     initWebViewer();
 
     return () => {
-      if (instance) {
+      if (newInstance) {
         console.log('Nettoyage de WebViewer');
-        instance.UI.dispose();
+        newInstance.UI.dispose();
+        setInstance(null);
       }
     };
-  }, [instance]); // Exécute seulement si l'instance change
+  }, []); // 🔥 Exécuter une seule fois au montage
 
   useEffect(() => {
     if (instance && pdfPath) {
@@ -107,4 +115,5 @@ function Editpdf({ onLoad, documentData, refresh }) {
 }
 
 export default Editpdf;
+
 
